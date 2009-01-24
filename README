@@ -1,0 +1,24 @@
+== How to use
+
+For a given model, will generate a new model to hold an image, 
+and will create a "service" class that allows the original 
+model and its image to be updated in the same transaction.
+
+== Usage
+
+script/generate attachment_fu_image class_that_needs_image
+
+== Example
+
+For example, if you have a User model, and want your users to have
+images, then run
+
+script/generate attachment_fu_image User
+
+This will generate a new model, UserImage, and will also generate
+the UserImageService.  The service's constructor takes a User and 
+a UserImage.  Calling save on the service saves both the model
+and the image model.
+
+If the image is nil, the image is not modified.
+
